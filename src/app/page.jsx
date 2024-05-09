@@ -4,6 +4,8 @@ import { auth } from '@/app/firebase/firebase'
 import { useRouter } from 'next/navigation'
 import { signOut } from 'firebase/auth'
 
+import Navigation from './Navigation'
+
 export default function Home() {
   const [user] = useAuthState(auth)
   const router = useRouter()
@@ -18,12 +20,9 @@ export default function Home() {
 
   return (
     <div>
-      <button onClick={() => {
-        signOut(auth)
-        router.push('/sign-in')
-        sessionStorage.removeItem('user')
-      }}>Log Out</button>
-      <div>Welcome, User!</div>
+      <Navigation></Navigation>
+
+
     </div >
   );
 }
